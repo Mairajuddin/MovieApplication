@@ -5,6 +5,7 @@ import ProductionHouse from "./Components/ProductionHouse";
 import GenreMovieList from "./Components/GenreMovieList";
 import { useContext, useEffect } from "react";
 import loadingContext from "./context/Context";
+import Footer from "./Components/Footer";
 
 function App() {
   const { loading } = useContext(loadingContext);
@@ -13,7 +14,7 @@ function App() {
   }, [loading]);
 
   return (
-    <div className="w-full min-h-screen  border-2 border-red-500">
+    <div className="w-full min-h-screen  ">
       {loading ? (
         <div
           style={{
@@ -40,6 +41,7 @@ function App() {
           <SliderComp />
           <ProductionHouse />
           <GenreMovieList />
+          <Footer />
         </>
       )}
     </div>
