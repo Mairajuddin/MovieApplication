@@ -30,13 +30,21 @@ const SliderComp = () => {
   return (
     <div className="relative w-full">
       <HiChevronLeft
-        style={{ backgroundColor: "#c9b257", border: "2px solid #9d6c01" }}
-        className="hidden md:block text-blue text-[30px] absolute top-1/2 left-4 transform -translate-y-1/2   cursor-pointer z-10 rounded-full h-[60px] w-[60px] p-3"
+        style={{
+          backgroundColor: "#14143c",
+          border: "2px solid grey",
+          boxShadow: "0px 0px 10px 10px rgba(128, 128, 128, 0.7)", // Gray shadow
+        }}
+        className="hidden md:block text-white text-[30px]  absolute top-1/2 left-4 transform -translate-y-1/2   cursor-pointer z-10 rounded-full h-[60px] w-[60px] p-3"
         onClick={() => sliderLeft(elementRef.current)}
       />
       <HiChevronRight
-        style={{ backgroundColor: "#c9b257", border: "2px solid #9d6c01" }}
-        className="hidden md:block text-blue text-[30px] absolute top-1/2 right-4 transform -translate-y-1/2  cursor-pointer z-10 rounded-full h-[60px] w-[60px] p-3"
+        style={{
+          backgroundColor: "#14143c",
+          border: "2px solid grey",
+          boxShadow: "0px 0px 10px 10px rgba(128, 128, 128, 0.7)", // Gray shadow
+        }}
+        className="hidden md:block text-white text-[30px] absolute top-1/2 right-4 transform -translate-y-1/2  cursor-pointer z-10 rounded-full h-[60px] w-[60px] p-3"
         onClick={() => sliderRight(elementRef.current)}
       />
       <div

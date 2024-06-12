@@ -64,7 +64,9 @@ const MovieList = ({ data }) => {
     infinite: true,
     speed: 500,
     slidesToShow: 5,
-    slidesToScroll: 5,
+    slidesToScroll: 3,
+    autoplay: true, // Enable autoplay
+    autoplaySpeed: 3000, // Set autoplay speed (in milliseconds)
     responsive: [
       {
         breakpoint: 1024,
@@ -72,6 +74,8 @@ const MovieList = ({ data }) => {
           slidesToShow: 3,
           slidesToScroll: 3,
           infinite: true,
+          autoplay: true, // Enable autoplay
+          autoplaySpeed: 3000, // Set autoplay speed (in milliseconds)
           dots: false,
         },
       },
