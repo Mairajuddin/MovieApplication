@@ -23,6 +23,7 @@ const ContextProvider = ({ children }) => {
   const getTrendingMovies = async () => {
     try {
       const data = await FireApi();
+      console.log(data, "data");
       setMovieList(data.results || []);
     } catch (err) {
       console.log(err.message || "An error occurred");
@@ -31,7 +32,9 @@ const ContextProvider = ({ children }) => {
 
   useEffect(() => {
     Promise.all([getMovieByGenreId(), getTrendingMovies()]).then(() => {
-      setLoading(false);
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
     });
   }, []);
 
