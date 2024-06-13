@@ -8,8 +8,10 @@ import {
 } from "react-icons/hi2";
 import HeaderItem from "./HeaderItem";
 import { HiDotsVertical, HiPlus } from "react-icons/hi";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
   const [toggle, setToggle] = useState(false);
 
   const menu = [
@@ -40,7 +42,7 @@ const Header = () => {
     },
   ];
   return (
-    <div className="w-full text-white flex items-center  justify-between gap-10 p-5">
+    <div className="w-full z-10 text-white flex items-center  justify-between gap-10 p-5">
       <div className="flex  gap-10 items-center">
         <div className="hidden md:flex gap-8  items-center ">
           <img
@@ -73,7 +75,7 @@ const Header = () => {
           {toggle ? (
             <div
               onMouseLeave={() => setToggle(false)}
-              className="absolute mt-2 bg-[#0c94cd] border-[1px] border-gray-700 p-3 px-5 py-4  rounded text-white"
+              className="absolute  mt-2 bg-[#0c94cd] border-[1px] border-gray-700 p-3 px-5 py-4  rounded text-white"
             >
               {menu.map(
                 (item, index) =>
@@ -89,7 +91,11 @@ const Header = () => {
           ) : null}
         </div>
       </div>
-      <img src="./avatar.png" className="w-[40px] rounded-full" />
+      <img
+        src="./avatar.png"
+        className="w-[40px] rounded-full"
+        onClick={() => navigate("/login")}
+      />
     </div>
   );
 };

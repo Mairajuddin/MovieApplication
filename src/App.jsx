@@ -1,3 +1,4 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./Components/Header";
 import SliderComp from "./Components/SliderComp";
 import "./App.css";
@@ -6,6 +7,9 @@ import GenreMovieList from "./Components/GenreMovieList";
 import { useContext, useEffect } from "react";
 import loadingContext from "./context/Context";
 import Footer from "./Components/Footer";
+import Layout from "./Layout";
+import LoginPage from "./Pages/LoginPage";
+import SignUp from "./Pages/SignUp";
 
 function App() {
   const { loading } = useContext(loadingContext);
@@ -36,13 +40,14 @@ function App() {
           <h1 className="text-white font-bold font-[200px]">Loading...</h1>
         </div>
       ) : (
-        <>
-          <Header />
-          <SliderComp />
-          <ProductionHouse />
-          <GenreMovieList />
-          <Footer />
-        </>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Layout />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<SignUp />} />
+          </Routes>
+        </BrowserRouter>
+        // <Layout />
       )}
     </div>
   );
