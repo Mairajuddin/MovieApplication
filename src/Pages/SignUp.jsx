@@ -1,14 +1,29 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import HitApi from "../Utils/useAuthRequest";
 
 const SignUp = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
   const navigate = useNavigate();
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add your login logic here
+    const data = new FormData(e.target);
+    const formData = {
+      username: data.get("name"),
+      email: data.get("email"),
+      password: data.get("password"),
+    };
+    if (formData.username && formData.password && formData.email) {
+      try {
+        console.log(formData, "formData");
+        const response = await HitApi("signup", "POST", formData);
+        response.status === true ? navigate("/login") : null;
+        console.log(response, "hehehehehe");
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      console.log("fill all fields");
+    }
   };
 
   return (
@@ -36,8 +51,8 @@ const SignUp = () => {
                   type="name"
                   autoComplete="name"
                   required
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  //value={name}
+                  //onChange={(e) => setName(e.target.value)}
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                 />
               </div>
@@ -56,8 +71,8 @@ const SignUp = () => {
                   type="email"
                   autoComplete="email"
                   required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  //value={email}
+                  //onChange={(e) => setEmail(e.target.value)}
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                 />
               </div>
@@ -77,8 +92,8 @@ const SignUp = () => {
                   type="password"
                   autoComplete="current-password"
                   required
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  //value={password}
+                  //onChange={(e) => setPassword(e.target.value)}
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                 />
               </div>
@@ -86,7 +101,7 @@ const SignUp = () => {
 
             <div>
               <button
-                onClick={() => navigate("/login")}
+                // onClick={() => navigate("/login")}
                 type="submit"
                 className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
               >
